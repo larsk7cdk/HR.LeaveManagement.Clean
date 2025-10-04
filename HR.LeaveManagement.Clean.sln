@@ -15,20 +15,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{69823513-931A-4EC7-AC76-5BFC3B50229F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Domain", "HR.LeaveManagement.Domain\HR.LeaveManagement.Domain.csproj", "{8145B786-FB5C-4C8A-96DB-B5E0780CF838}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Domain", "src\HR.LeaveManagement.Domain\HR.LeaveManagement.Domain.csproj", "{8145B786-FB5C-4C8A-96DB-B5E0780CF838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Application", "HR.LeaveManagement.Application\HR.LeaveManagement.Application.csproj", "{40A036DA-3123-449E-A428-752022FED394}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Application", "src\HR.LeaveManagement.Application\HR.LeaveManagement.Application.csproj", "{40A036DA-3123-449E-A428-752022FED394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Infrastructure", "HR.LeaveManagement.Infrastructure\HR.LeaveManagement.Infrastructure.csproj", "{AF325A55-00C0-4FEC-B658-675217B2D051}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Infrastructure", "src\HR.LeaveManagement.Infrastructure\HR.LeaveManagement.Infrastructure.csproj", "{AF325A55-00C0-4FEC-B658-675217B2D051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Api", "HR.LeaveManagement.Api\HR.LeaveManagement.Api.csproj", "{EE58CCB9-5D27-4C52-A29E-724DDEA47A8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Api", "src\HR.LeaveManagement.Api\HR.LeaveManagement.Api.csproj", "{EE58CCB9-5D27-4C52-A29E-724DDEA47A8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Persistence", "src\HR.LeaveManagement.Persistence\HR.LeaveManagement.Persistence.csproj", "{D511A7EF-3790-43A8-9E87-C80655FF9E78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{F3EE424C-806E-4FB4-B84F-F1C33120CC3F}"
 	ProjectSection(SolutionItems) = preProject
 		docs\readme.md = docs\readme.md
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Persistence", "HR.LeaveManagement.Persistence\HR.LeaveManagement.Persistence.csproj", "{D511A7EF-3790-43A8-9E87-C80655FF9E78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
