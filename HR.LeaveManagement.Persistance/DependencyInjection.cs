@@ -10,7 +10,7 @@ namespace HR.LeaveManagement.Persistence;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<HrDatabaseContext>(options =>
         {
