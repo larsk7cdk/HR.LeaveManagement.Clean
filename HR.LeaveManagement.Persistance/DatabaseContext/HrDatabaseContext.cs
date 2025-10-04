@@ -2,7 +2,7 @@
 using HR.LeaveManagement.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace HR.LeaveManagement.Persistance.DatabaseContext;
+namespace HR.LeaveManagement.Persistence.DatabaseContext;
 
 public class HrDatabaseContext : DbContext
 {

@@ -2,6 +2,17 @@
 
 namespace HR.LeaveManagement.Application.Contracts.Persistance;
 
-public interface ILeaveAllocationRepository<T> : IGenericRepository<LeaveAllocation>
+public interface ILeaveAllocationRepository : IGenericRepository<LeaveAllocation>
 {
+    Task<LeaveAllocation?> GetLeaveAllocationWithDetails(int id);
+    
+    Task<IReadOnlyList<LeaveAllocation>> GetLeaveAllocationsWithDetails();
+    
+    Task<IReadOnlyList<LeaveAllocation>> GetLeaveAllocationsWithDetails(string userId);
+    
+    Task<LeaveAllocation?> GetUserAllocations(string userId, int leaveTypeId);
+    
+    Task AddAllocations(List<LeaveAllocation> allocations);
+    
+    Task<bool> AllocationExists(string userId, int leaveTypeId, int period);
 }

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HR.LeaveManagement.Persistance.Configurations;
+namespace HR.LeaveManagement.Persistence.Configurations;
 
 public class LeaveTypeConfiguration : IEntityTypeConfiguration<LeaveType>
 {
@@ -19,7 +19,7 @@ public class LeaveTypeConfiguration : IEntityTypeConfiguration<LeaveType>
         });
 
         // Add validation rules for LeaveType entity in database
-        builder.Property(p => p.Name)
+        builder.Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(100);
     }

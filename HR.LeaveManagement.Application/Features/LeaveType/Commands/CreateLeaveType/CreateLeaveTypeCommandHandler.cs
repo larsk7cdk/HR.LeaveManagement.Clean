@@ -21,9 +21,9 @@ public class CreateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository 
         var leaveTypeToCreate = mapper.Map<Domain.LeaveType>(request);
 
         // Add to database
-        var leaveTypeCreated = await leaveTypeRepository.CreateAsync(leaveTypeToCreate);
+        await leaveTypeRepository.CreateAsync(leaveTypeToCreate);
 
         // Return record id
-        return leaveTypeCreated.Id;
+        return leaveTypeToCreate.Id;
     }
 }
