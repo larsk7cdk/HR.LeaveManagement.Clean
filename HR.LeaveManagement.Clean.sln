@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Applicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Persistence", "HR.LeaveManagement.Persistance\HR.LeaveManagement.Persistence.csproj", "{86E1C564-6E7C-4B1E-8071-20146BBF7654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagemtn.Infrastructure", "HR.LeaveManagemtn.Infrastructure\HR.LeaveManagemtn.Infrastructure.csproj", "{AF325A55-00C0-4FEC-B658-675217B2D051}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Infrastructure", "HR.LeaveManagement.Infrastructure\HR.LeaveManagement.Infrastructure.csproj", "{AF325A55-00C0-4FEC-B658-675217B2D051}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

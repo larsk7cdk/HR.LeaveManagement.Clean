@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace HR.LeaveManagemtn.Infrastructure.EmailService;
+namespace HR.LeaveManagement.Infrastructure.EmailService;
 
 public class EmailSender(IOptions<EmailSettings> emailSettings) : IEmailSender
 {
