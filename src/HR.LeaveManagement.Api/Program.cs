@@ -1,6 +1,8 @@
+using System.Reflection;
 using HR.LeaveManagement.Application;
 using HR.LeaveManagement.Infrastructure;
 using HR.LeaveManagement.Persistence;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,25 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
     });
 });
+
+// Add Swqagger
+builder.Services
+    .AddOpenApi()
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Version = "v1",
+            Title = "HR Management System API",
+            Description = "ASP.NET Core Web API til HR Management System",
+        });
+
+        // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        //
+        // options.IncludeXmlComments(xmlPath);
+    });
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

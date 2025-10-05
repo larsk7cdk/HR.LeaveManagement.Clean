@@ -7,6 +7,4 @@ public class CreateLeaveTypeCommand : IRequest<int>
     public string Name { get; init; } = string.Empty;
 
     public int DefaultDays { get; init; }
-    
-    
 }

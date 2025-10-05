@@ -23,8 +23,13 @@ public class UpdateLeaveTypeCommandHandler(
             throw new BadRequestException("Invalid Leave Type", validationResult);
         }
 
+        var leaveTypeToUpdate = await leaveTypeRepository.GetByIdAsync(request.Id);
+
+        if (leaveTypeToUpdate is null)
+            throw new NotFoundException(nameof(LeaveType), request.Id);
+
         // Convert to domain entity object
-        var leaveTypeToUpdate = mapper.Map<Domain.LeaveType>(request);
+        mapper.Map(request, leaveTypeToUpdate);
 
         // Update to database
         await leaveTypeRepository.UpdateAsync(leaveTypeToUpdate);

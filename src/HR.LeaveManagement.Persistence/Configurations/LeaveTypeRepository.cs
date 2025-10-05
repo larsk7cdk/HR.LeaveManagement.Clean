@@ -13,11 +13,7 @@ public class LeaveTypeRepository(HrDatabaseContext context)
 
     public async Task<bool> IsLeaveTypeUniqueAsync(string name)
     {
-        return await _context.LeaveTypes.AnyAsync(p => p.Name == name);
-    }
-
-    public async Task<bool> LeaveTypeExistsAsync(int id)
-    {
-        return await _context.LeaveTypes.AnyAsync(p => p.Id == id);
+        var result = await _context.LeaveTypes.AnyAsync(p => p.Name == name);
+        return result;
     }
 }

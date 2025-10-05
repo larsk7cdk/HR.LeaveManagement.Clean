@@ -6,7 +6,7 @@ public class LeaveTypeDetailsDto
 
     public string Name { get; init; } = string.Empty;
 
-    public int DefaultDayse { get; init; }
+    public int DefaultDays { get; init; }
 
     public DateTime? DateCreated { get; init; }
 
