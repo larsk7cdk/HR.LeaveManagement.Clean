@@ -26,6 +26,9 @@ public class CreateLeaveAllocationCommandHandler(
             throw new BadRequestException("Invalid Leave Allocation", validationResult);
         }
 
+        // Get leave type
+        var leaveType = await leaveTypeRepository.GetByIdAsync(request.LeaveTypeId);
+        
         // Convert to domain entity object
         var leaveAllocationToCreate = mapper.Map<Domain.LeaveAllocation>(request);
 
