@@ -1,4 +1,5 @@
 using System.Reflection;
+using HR.LeaveManagement.Api.Middlewares;
 using HR.LeaveManagement.Application;
 using HR.LeaveManagement.Infrastructure;
 using HR.LeaveManagement.Persistence;
@@ -46,6 +47,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
