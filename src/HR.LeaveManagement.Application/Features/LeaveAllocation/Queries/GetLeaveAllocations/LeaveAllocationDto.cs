@@ -6,7 +6,7 @@ public class LeaveAllocationDto
 {
     public int Id { get; init; }
     public int LeaveTypeId { get; init; }
-    public LeaveTypeDto LeaveType { get; init; }
+    public LeaveTypeDto? LeaveType { get; init; }
     public int NumberOfDays { get; init; }
     public int Period { get; init; }
 }

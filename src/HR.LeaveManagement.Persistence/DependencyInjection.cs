@@ -1,4 +1,4 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistance;
+﻿using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Persistence.Configurations;
 using HR.LeaveManagement.Persistence.DatabaseContext;
 using HR.LeaveManagement.Persistence.Repositories;
