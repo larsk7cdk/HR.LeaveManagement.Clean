@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using HR.LeaveManagement.Application.Contracts.Email;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
@@ -14,22 +15,28 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Commands.CreateLe
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly ILeaveRequestRepository _leaveRequestRepository;
 
-        public CreateLeaveRequestCommandHandler(IEmailSender emailSender,
-            IMapper mapper, ILeaveTypeRepository leaveTypeRepository, ILeaveRequestRepository leaveRequestRepository)
+        public CreateLeaveRequestCommandHandler(
+            IEmailSender emailSender,
+            IMapper mapper,
+            ILeaveTypeRepository leaveTypeRepository,
+            ILeaveRequestRepository leaveRequestRepository)
         {
             _emailSender = emailSender;
             _mapper = mapper;
-            this._leaveTypeRepository = leaveTypeRepository;
-            this._leaveRequestRepository = leaveRequestRepository;
+            _leaveTypeRepository = leaveTypeRepository;
+            _leaveRequestRepository = leaveRequestRepository;
         }
 
         public async Task<Unit> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
         {
             var validator = new CreateLeaveRequestCommandValidator(_leaveTypeRepository);
-            var validationResult = await validator.ValidateAsync(request);
+            await validator.ValidateAndThrowAsync(request, cancellationToken);
 
-            if (validationResult.Errors.Any())
-                throw new BadRequestException("Invalid Leave Request", validationResult);
+
+            // var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+            // if (validationResult.Errors.Any())
+            //     throw new BadRequestException("Invalid Leave Request", validationResult);
 
             // Get requesting employee's id
 

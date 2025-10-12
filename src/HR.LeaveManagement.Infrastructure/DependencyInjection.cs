@@ -12,7 +12,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+        services.AddTransient(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
         services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
         services.AddTransient<IEmailSender, EmailSender>();

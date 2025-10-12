@@ -1,0 +1,40 @@
+﻿using FluentValidation;
+using HR.LeaveManagement.Application.Contracts.Logging;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace HR.LeaveManagement.Api.Middlewares;
+
+public class ValidationExceptionHandler(
+    IProblemDetailsService problemDetailsService,
+    IAppLogger<ValidationExceptionHandler> logger) : IExceptionHandler
+{
+    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception,
+        CancellationToken cancellationToken)
+    {
+        if (exception is not ValidationException validationException)
+            return false;
+
+        logger.LogWarning("A validation exception occurred while processing the request.", exception);
+
+        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+        var context = new ProblemDetailsContext
+        {
+            HttpContext = httpContext,
+            Exception = exception,
+            ProblemDetails = new ProblemDetails
+            {
+                Detail = "One or more validation errors occurred.",
+                Status = StatusCodes.Status400BadRequest,
+            }
+        };
+
+        var errors = validationException.Errors
+            .GroupBy(e => e.PropertyName, e => e.ErrorMessage)
+            .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
+
+        context.ProblemDetails.Extensions["errors"] = errors;
+
+        return await problemDetailsService.TryWriteAsync(context);
+    }
+}

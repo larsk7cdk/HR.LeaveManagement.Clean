@@ -23,5 +23,5 @@ add-migration InitialMigration
 ```
 
 ```
-update-database
+dotnet ef database update
 ```

@@ -33,10 +33,10 @@ namespace HR.LeaveManagement.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LeaveTypeId = table.Column<int>(type: "int", nullable: false),
                     NumberOfDays = table.Column<int>(type: "int", nullable: false),
+                    LeaveTypeId = table.Column<int>(type: "int", nullable: false),
                     Period = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -57,9 +57,11 @@ namespace HR.LeaveManagement.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LeaveTypeId = table.Column<int>(type: "int", nullable: false),
                     DateRequested = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RequestComments = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RequestComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Approved = table.Column<bool>(type: "bit", nullable: true),
                     Cancelled = table.Column<bool>(type: "bit", nullable: false),
                     RequestingEmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -80,7 +82,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "DateCreated", "DateModified", "DefaultDays", "Name" },
-                values: new object[] { 1, new DateTime(2025, 10, 4, 19, 57, 34, 325, DateTimeKind.Local).AddTicks(1693), new DateTime(2025, 10, 4, 19, 57, 34, 327, DateTimeKind.Local).AddTicks(1479), 10, "Vacation" });
+                values: new object[] { 1, new DateTime(2025, 10, 12, 9, 58, 38, 48, DateTimeKind.Local).AddTicks(3454), new DateTime(2025, 10, 12, 9, 58, 38, 51, DateTimeKind.Local).AddTicks(1839), 10, "Vacation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveAllocations_LeaveTypeId",

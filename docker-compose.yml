@@ -1,0 +1,40 @@
+services:
+  hr.leavemanagement.api:
+    image: ${DOCKER_REGISTRY-}hrleavemanagementapi
+    container_name: hrleavemanagementapi
+    build:
+      context: .
+      dockerfile: src/HR.LeaveManagement.Api/Dockerfile
+#    networks:
+#      - dbnet
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+
+    depends_on:
+      - hrleavemanagementdb
+  
+  hrleavemanagementdb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: hrleavemanagementdb
+    environment:
+      database: "db_hr_leavemanagement"
+      SA_PASSWORD: "P@ssword2025"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+#    networks:
+#      - dbnet
+    ports:
+      - "1433:1433"
+
+    volumes:
+      - mssql_data:/var/opt/mssql
+  
+volumes:
+  mssql_data:
+    
+#networks:
+#  dbnet:
+#    name: dbnet
+#    internal: false # in production, it should be true if you don't want to expose this network to the outside world
+#    driver: bridge

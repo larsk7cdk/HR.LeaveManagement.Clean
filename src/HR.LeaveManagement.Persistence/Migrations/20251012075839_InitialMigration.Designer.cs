@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.LeaveManagement.Persistence.Migrations
 {
     [DbContext(typeof(HrDatabaseContext))]
-    [Migration("20251004175734_InitialMigration")]
+    [Migration("20251012075839_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -82,16 +82,21 @@ namespace HR.LeaveManagement.Persistence.Migrations
                     b.Property<DateTime>("DateRequested")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("LeaveTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("RequestComments")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestingEmployeeId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -130,8 +135,8 @@ namespace HR.LeaveManagement.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2025, 10, 4, 19, 57, 34, 325, DateTimeKind.Local).AddTicks(1693),
-                            DateModified = new DateTime(2025, 10, 4, 19, 57, 34, 327, DateTimeKind.Local).AddTicks(1479),
+                            DateCreated = new DateTime(2025, 10, 12, 9, 58, 38, 48, DateTimeKind.Local).AddTicks(3454),
+                            DateModified = new DateTime(2025, 10, 12, 9, 58, 38, 51, DateTimeKind.Local).AddTicks(1839),
                             DefaultDays = 10,
                             Name = "Vacation"
                         });
