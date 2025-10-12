@@ -11,17 +11,20 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Commands.CreateLe
     public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveRequestCommand, Unit>
     {
         private readonly IEmailSender _emailSender;
+        private readonly IValidator<CreateLeaveRequestCommand> _validator;
         private readonly IMapper _mapper;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly ILeaveRequestRepository _leaveRequestRepository;
 
         public CreateLeaveRequestCommandHandler(
             IEmailSender emailSender,
+            IValidator<CreateLeaveRequestCommand> validator,
             IMapper mapper,
             ILeaveTypeRepository leaveTypeRepository,
             ILeaveRequestRepository leaveRequestRepository)
         {
             _emailSender = emailSender;
+            _validator = validator;
             _mapper = mapper;
             _leaveTypeRepository = leaveTypeRepository;
             _leaveRequestRepository = leaveRequestRepository;
@@ -29,8 +32,8 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Commands.CreateLe
 
         public async Task<Unit> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateLeaveRequestCommandValidator(_leaveTypeRepository);
-            await validator.ValidateAndThrowAsync(request, cancellationToken);
+            // var validator = new CreateLeaveRequestCommandValidator(_leaveTypeRepository);
+            await _validator.ValidateAndThrowAsync(request, cancellationToken);
 
 
             // var validationResult = await validator.ValidateAsync(request, cancellationToken);
